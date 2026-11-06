@@ -38,7 +38,7 @@ h2 { font-size:21px; margin:0; }
 p { color:var(--muted); }
 .summary {
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:12px;
   margin:24px 0;
 }
@@ -225,7 +225,7 @@ add("D&D 3.0 / 3.5 — Official","Wizards of the Coast",[
 ]);
 
 // Forgotten Realms — separate setting within D&D
-add("Forgotten Realms","Wizards of the Coast",[
+add("D&D 3.x — Forgotten Realms","Wizards of the Coast",[
   "Forgotten Realms Campaign Setting",
   "Player's Guide to Faerûn",
   "Faiths and Pantheons",
@@ -308,9 +308,6 @@ document.getElementById("official").textContent=
   items.filter(x=>x.group==="D&D 3.0 / 3.5 — Official").length;
 document.getElementById("thirdparty").textContent=
   items.filter(x=>x.group==="Third-party d20 System").length;
-document.getElementById("other").textContent=
-  items.filter(x=>["Forgotten Realms","D&D 4th Edition"]
-    .includes(x.group)).length;
 
 function render() {
   const query=document.getElementById("search")
