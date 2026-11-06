@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabletop RPG Collection | Library</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0b101b;
+  --panel: #151d2c;
+  --panel-hover: #202c40;
+  --ink: #edf3fc;
+  --muted: #a8b8cd;
+  --gold: #f6cc69;
+  --line: #354154;
+  --green: #6bd6a0;
+  --amber: #f6ca7a;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top right,
+    #273147,
+    var(--bg) 46%
+  );
+  color: var(--ink);
+  font: 15px/1.55 system-ui, sans-serif;
+}
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 48px 20px 70px;
+}
+header {
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  color: var(--gold);
+  font-weight: 750;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 58px);
+  line-height: 1.1;
+  margin: 12px 0;
+}
+h2 {
+  margin: 0;
+  font-size: 22px;
+}
+p {
+  color: var(--muted);
+}
+.intro {
+  max-width: 680px;
+}
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 26px 0 36px;
+}
+.metric {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 18px;
+}
+.metric strong {
+  display: block;
+  font-size: 30px;
+  color: var(--gold);
+}
+.metric span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.section-title {
+  margin: 35px 0 18px;
+}
+.collections {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.collection {
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    background .2s,
+    border-color .2s,
+    transform .2s;
+}
+.collection:hover {
+  background: var(--panel-hover);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+.collection:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+.collection .category {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin-bottom: 10px;
+}
+.collection h2 {
+  margin-bottom: 10px;
+}
+.collection p {
+  margin: 0 0 20px;
+  flex: 1;
+}
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.stat {
+  background: #263248;
+  border-radius: 20px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 650;
+}
+.complete {
+  background: #153c32;
+  color: var(--green);
+}
+.incomplete {
+  background: #453a25;
+  color: var(--amber);
+}
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.footer {
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+  padding-top: 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
+@media(max-width:700px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+  .collections {
+    grid-template-columns: 1fr;
+  }
+}
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .metric, .collection {
+    background: white;
+    color: black;
+    border-color: #aaa;
+  }
+  p, .footer {
+    color: #555;
+  }
+  .collection {
+    break-inside: avoid;
+  }
+}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <div class="eyebrow">
+    Personal Collection · Tabletop Roleplaying Games
+  </div>
+  <h1>RPG Collection<br>Library</h1>
+  <p class="intro">
+    A catalog of tabletop roleplaying games, sourcebooks,
+    supplements, and accessories organized by game line.
+    Select a collection to view its complete inventory.
+  </p>
+</header>
+
+<div class="summary">
+  <div class="metric">
+    <strong>4</strong>
+    <span>Cataloged collections</span>
+  </div>
+  <div class="metric">
+    <strong>2</strong>
+    <span>Complete fantasy/game lines</span>
+  </div>
+  <div class="metric">
+    <strong>79</strong>
+    <span>Distinct cataloged titles and products*</span>
+  </div>
+</div>
+
+<h2 class="section-title">Collections</h2>
+
+<div class="collections">
+
+  <!-- STAR WARS -->
+  <a class="collection" href="starwars.html">
+    <div class="category">Wizards of the Coast</div>
+    <h2>Star Wars RPG</h2>
+    <p>
+      Original d20, Revised d20, and Saga Edition
+      roleplaying games, plus Miniatures, magazines,
+      and accessories.
+    </p>
+    <div class="stats">
+      <span class="stat">25 / 33 RPG books</span>
+      <span class="stat complete">Revised complete</span>
+      <span class="stat incomplete">8 missing titles</span>
+    </div>
+    <div class="link">
+      <span>View Star Wars Collection</span>
+      <span aria-hidden="true">&rarr;</span>
+    </div>
+  </a>
+
+  <!-- WARCRAFT -->
+  <a class="collection" href="warcraft.html">
+    <div class="category">Sword &amp; Sorcery Studios</div>
+    <h2>Warcraft RPG</h2>
+    <p>
+      Original Warcraft d20 and revised World of
+      Warcraft tabletop RPG books.
+    </p>
+    <div class="stats">
+      <span class="stat">13 / 13 books</span>
+      <span class="stat complete">100% complete</span>
+    </div>
+    <div class="link">
+      <span>View Warcraft Collection</span>
+      <span aria-hidden="true">&rarr;</span>
+    </div>
+  </a>
+
+  <!-- MUNCHKIN -->
+  <a class="collection" href="munchkin.html">
+    <div class="category">Steve Jackson Games</div>
+    <h2>Munchkin d20 RPG</h2>
+    <p>
+      Complete fantasy Munchkin d20 RPG collection,
+      with a separate entry for Star Munchkin.
+    </p>
+    <div class="stats">
+      <span class="stat">5 / 5 fantasy products</span>
+      <span class="stat complete">100% complete</span>
+      <span class="stat">1 duplicate</span>
+    </div>
+    <div class="link">
+      <span>View Munchkin Collection</span>
+      <span aria-hidden="true">&rarr;</span>
+    </div>
+  </a>
+
+  <!-- WHITE WOLF -->
+  <a class="collection" href="whitewolf.html">
+    <div class="category">White Wolf Game Studio</div>
+    <h2>White Wolf RPG</h2>
+    <p>
+      Changeling, Werewolf, Exalted, and Hunter
+      collections, including preliminary resale
+      valuations and original MSRP information.
+    </p>
+    <div class="stats">
+      <span class="stat">28 books / booklets</span>
+      <span class="stat">Valuation catalog</span>
+    </div>
+    <div class="link">
+      <span>View White Wolf Collection</span>
+      <span aria-hidden="true">&rarr;</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">
+  <b>Collection notes:</b>
+  Inventories are based on photographed books and
+  confirmed ownership. Completion percentages refer
+  to the defined product lines, not every possible
+  related publication.
+  <p>
+    *The 79-item figure is an approximate combined
+    catalog count and includes some non-book products
+    and missing-title checklist entries. It does not
+    represent 79 physical books owned.
+  </p>
+</div>
+
+</main>
+</body>
+</html>
