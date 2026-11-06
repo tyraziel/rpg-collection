@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dungeons & Dragons | RPG Collection</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg:#0b101b;
+  --panel:#151d2c;
+  --panel2:#1d293a;
+  --ink:#edf3fc;
+  --muted:#a8b8cd;
+  --gold:#f6cc69;
+  --line:#354154;
+  --green:#6bd6a0;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:radial-gradient(circle at top right,#273147,var(--bg) 46%);
+  color:var(--ink);
+  font:15px/1.55 system-ui,sans-serif;
+}
+main { max-width:1150px; margin:auto; padding:38px 20px 70px; }
+header { border-bottom:1px solid var(--line); padding-bottom:20px; }
+.eyebrow {
+  color:var(--gold);
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+h1 { font-size:clamp(30px,5vw,52px); line-height:1.1; margin:10px 0; }
+h2 { font-size:21px; margin:0; }
+p { color:var(--muted); }
+.summary {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:24px 0;
+}
+.metric {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:16px;
+}
+.metric strong { display:block; color:var(--gold); font-size:30px; }
+.metric span { color:var(--muted); font-size:13px; }
+.notice {
+  background:#242335;
+  border-left:3px solid var(--gold);
+  padding:13px 16px;
+  border-radius:8px;
+}
+.toolbar { display:flex; flex-wrap:wrap; gap:10px; margin:25px 0; }
+.toolbar input,.toolbar select,.toolbar button {
+  background:var(--panel);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:12px;
+  font:inherit;
+}
+.toolbar input { flex:2; min-width:190px; }
+.toolbar select { flex:1; min-width:150px; }
+.toolbar button { cursor:pointer; background:var(--panel2); }
+.group { margin:30px 0; }
+.grouphead {
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:10px;
+}
+.grouphead small { color:var(--muted); }
+.items { display:grid; gap:8px; }
+.item {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:13px 16px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+}
+.item h3 { margin:0; font-size:15px; }
+.meta { color:var(--muted); font-size:12px; margin-top:4px; }
+.status {
+  background:#153c32;
+  color:var(--green);
+  font-size:12px;
+  font-weight:750;
+  padding:4px 10px;
+  border-radius:20px;
+}
+.footer {
+  border-top:1px solid var(--line);
+  padding-top:20px;
+  margin-top:35px;
+  font-size:13px;
+  color:var(--muted);
+}
+.empty { padding:24px; text-align:center; color:var(--muted); }
+@media(max-width:650px) {
+  .summary { grid-template-columns:repeat(2,1fr); }
+  .toolbar { flex-direction:column; }
+}
+@media print {
+  body { background:white; color:black; }
+  .metric,.item { background:white; color:black; border-color:#aaa; }
+  .toolbar { display:none; }
+  .status { background:#eee!important; color:black!important; }
+  p,.meta,.footer { color:#555!important; }
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="eyebrow">Personal Collection · D&D and d20 System</div>
+  <h1>DUNGEONS &amp; DRAGONS<br>RPG Collection</h1>
+  <p>
+    Official Dungeons &amp; Dragons, third-party d20 System
+    supplements, campaign settings, and multiple editions.
+    All titles are organized under one collection.
+  </p>
+</header>
+
+<div class="summary">
+  <div class="metric">
+    <strong id="total">56</strong>
+    <span>Cataloged books</span>
+  </div>
+  <div class="metric">
+    <strong id="official">20</strong>
+    <span>Official D&D 3.0/3.5</span>
+  </div>
+  <div class="metric">
+    <strong id="thirdparty">26</strong>
+    <span>Third-party d20</span>
+  </div>
+  <div class="metric">
+    <strong id="other">10</strong>
+    <span>Forgotten Realms + 4e</span>
+  </div>
+</div>
+
+<div class="notice">
+  <b>Collection scope:</b>
+  All Dungeons &amp; Dragons editions and compatible d20
+  supplements belong in this catalog. Forgotten Realms
+  is tracked separately as a campaign setting within
+  the collection. Third-party publishers retain their
+  own identification.
+  Counts reflect photographed/cataloged books, not
+  completion of every published D&amp;D product line.
+</div>
+
+<div class="toolbar">
+  <input id="search" type="search"
+    placeholder="Search titles, publishers, editions…">
+  <select id="category">
+    <option value="all">All categories</option>
+  </select>
+  <select id="publisher">
+    <option value="all">All publishers</option>
+  </select>
+  <button id="print">Print / Save PDF</button>
+</div>
+
+<div id="catalog"></div>
+
+<div class="footer">
+  <b>Catalog conventions:</b>
+  All listed titles were previously cataloged as owned.
+  Some official D&amp;D books may have been published for
+  3.0 rather than 3.5; both are grouped together.
+  Third-party d20 material is compatible with the
+  broader d20 System but is not necessarily official D&amp;D.
+  Additional editions and campaign settings can be added
+  without changing the catalog structure.
+</div>
+</main>
+
+<script>
+const items = [];
+
+function add(group,publisher,titles,edition="3.0 / 3.5") {
+  for(const title of titles) {
+    items.push({group,publisher,title,edition,status:"owned"});
+  }
+}
+
+// Official Dungeons & Dragons 3.0 / 3.5
+add("D&D 3.0 / 3.5 — Official","Wizards of the Coast",[
+  "Libris Mortis",
+  "Book of Vile Darkness",
+  "Magic of Incarnum",
+  "Races of Destiny",
+  "Races of Stone",
+  "Races of the Wild",
+  "Races of Eberron",
+  "Races of the Dragon",
+  "Rules Compendium",
+  "Book of Exalted Deeds",
+  "Player's Handbook II",
+  "Expanded Psionics Handbook",
+  "Complete Exotic Arms Guide",
+  "Oriental Adventures",
+  "Complete Warrior",
+  "Complete Divine",
+  "Complete Arcane",
+  "Complete Scoundrel",
+  "Complete Champion",
+  "Complete Adventurer"
+]);
+
+// Third-party d20 supplements
+add("Third-party d20 System","Fantasy Flight Games",[
+  "Cityworks"
+]);
+
+add("Third-party d20 System","Fantasy Flight Games — Legends & Lairs",[
+  "Monster's Handbook",
+  "Path of Shadow",
+  "Path of Faith",
+  "Darkness & Dread",
+  "Mythic Races",
+  "Spells & Spellcraft",
+  "Path of the Sword",
+  "Path of Magic",
+  "Mastercraft Anthology",
+  "Giant Lore",
+  "Evocation",
+  "Draconic Lore",
+  "Necromantic Lore",
+  "School of Illusion",
+  "Twisted Lore",
+  "Elemental Lore"
+]);
+
+add("Third-party d20 System","Sword & Sorcery Studios / White Wolf",[
+  "Player's Guide to Fighters and Barbarians",
+  "Player's Guide to Wizards, Bards and Sorcerers",
+  "Player's Guide to Monks and Paladins",
+  "Player's Guide to Clerics and Druids",
+  "Player's Guide to Rangers and Rogues",
+  "Relics and Rituals",
+  "Relics and Rituals II: Lost Lore"
+]);
+
+add("Third-party d20 System","Malhavoc Press",[
+  "The Complete Book of Eldritch Might"
+]);
+
+add("Third-party d20 System","Troll Lord Games",[
+  "The Book of Familiars"
+]);
+
+// Forgotten Realms — separate setting within D&D
+add("Forgotten Realms","Wizards of the Coast",[
+  "Forgotten Realms Campaign Setting",
+  "Player's Guide to Faerûn",
+  "Faiths and Pantheons",
+  "Dragons of Faerûn",
+  "The Grand History of the Realms",
+  "Races of Faerûn",
+  "The Twilight Tomb"
+],"Forgotten Realms / 3.x");
+
+// Fourth Edition core books
+add("D&D 4th Edition","Wizards of the Coast",[
+  "Player's Handbook",
+  "Dungeon Master's Guide",
+  "Monster Manual"
+],"4th Edition");
+
+const groups = [...new Set(items.map(x=>x.group))];
+const publishers = [...new Set(items.map(x=>x.publisher))].sort();
+
+const category = document.getElementById("category");
+const publisher = document.getElementById("publisher");
+
+for(const group of groups) {
+  const option=document.createElement("option");
+  option.value=group;
+  option.textContent=group;
+  category.append(option);
+}
+for(const name of publishers) {
+  const option=document.createElement("option");
+  option.value=name;
+  option.textContent=name;
+  publisher.append(option);
+}
+
+document.getElementById("total").textContent=items.length;
+document.getElementById("official").textContent=
+  items.filter(x=>x.group==="D&D 3.0 / 3.5 — Official").length;
+document.getElementById("thirdparty").textContent=
+  items.filter(x=>x.group==="Third-party d20 System").length;
+document.getElementById("other").textContent=
+  items.filter(x=>["Forgotten Realms","D&D 4th Edition"]
+    .includes(x.group)).length;
+
+function render() {
+  const query=document.getElementById("search")
+    .value.trim().toLowerCase();
+  const selectedCategory=category.value;
+  const selectedPublisher=publisher.value;
+  const root=document.getElementById("catalog");
+  root.replaceChildren();
+
+  let count=0;
+
+  for(const group of groups) {
+    const matching=items.filter(item=>
+      item.group===group &&
+      (selectedCategory==="all" || selectedCategory===group) &&
+      (selectedPublisher==="all" || selectedPublisher===item.publisher) &&
+      [item.title,item.publisher,item.edition,item.group]
+        .join(" ").toLowerCase().includes(query)
+    );
+
+    if(!matching.length) continue;
+    count+=matching.length;
+
+    const section=document.createElement("section");
+    section.className="group";
+
+    const head=document.createElement("div");
+    head.className="grouphead";
+
+    const heading=document.createElement("h2");
+    heading.textContent=group;
+
+    const countLabel=document.createElement("small");
+    countLabel.textContent=matching.length+" books";
+
+    head.append(heading,countLabel);
+    section.append(head);
+
+    const list=document.createElement("div");
+    list.className="items";
+
+    for(const item of matching) {
+      const row=document.createElement("article");
+      row.className="item";
+
+      const left=document.createElement("div");
+      const title=document.createElement("h3");
+      title.textContent=item.title;
+      left.append(title);
+
+      const meta=document.createElement("div");
+      meta.className="meta";
+      meta.textContent=item.publisher+" · "+item.edition;
+      left.append(meta);
+
+      const badge=document.createElement("span");
+      badge.className="status";
+      badge.textContent="Owned";
+
+      row.append(left,badge);
+      list.append(row);
+    }
+
+    section.append(list);
+    root.append(section);
+  }
+
+  if(!count) {
+    const empty=document.createElement("div");
+    empty.className="empty";
+    empty.textContent="No matching books.";
+    root.append(empty);
+  }
+}
+
+document.getElementById("search")
+  .addEventListener("input",render);
+category.addEventListener("change",render);
+publisher.addEventListener("change",render);
+document.getElementById("print")
+  .addEventListener("click",()=>window.print());
+
+render();
+</script>
+</body>
+</html>

@@ -8,147 +8,174 @@
 <style>
 :root {
   color-scheme: dark;
-  --bg: #0b101b;
-  --panel: #151d2c;
-  --panel2: #1d293a;
-  --ink: #edf3fc;
-  --muted: #a8b8cd;
-  --gold: #f6cc69;
-  --line: #354154;
-  --green: #6bd6a0;
-  --amber: #f6ca7a;
+  --bg:#0b101b;
+  --panel:#151d2c;
+  --panel2:#1d293a;
+  --ink:#edf3fc;
+  --muted:#a8b8cd;
+  --gold:#f6cc69;
+  --line:#354154;
+  --green:#6bd6a0;
+  --red:#ff9a99;
 }
-* { box-sizing: border-box; }
+* { box-sizing:border-box; }
 body {
-  margin: 0;
-  background: radial-gradient(circle at top right, #273147, var(--bg) 46%);
-  color: var(--ink);
-  font: 15px/1.55 system-ui, sans-serif;
+  margin:0;
+  background:radial-gradient(circle at top right,#273147,var(--bg) 46%);
+  color:var(--ink);
+  font:15px/1.55 system-ui,sans-serif;
 }
 main {
-  max-width: 1100px;
-  margin: auto;
-  padding: 38px 20px 70px;
+  max-width:1100px;
+  margin:auto;
+  padding:38px 20px 70px;
 }
 header {
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 20px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:20px;
 }
 .eyebrow {
-  color: var(--gold);
-  font-weight: 750;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  font-size: 12px;
+  color:var(--gold);
+  font-weight:750;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-size:12px;
 }
 h1 {
-  font-size: clamp(30px, 5vw, 52px);
-  line-height: 1.1;
-  margin: 10px 0;
+  font-size:clamp(30px,5vw,52px);
+  line-height:1.1;
+  margin:10px 0;
 }
-h2 { font-size: 21px; margin: 0; }
-p { color: var(--muted); }
+h2 { font-size:21px; margin:0; }
+p { color:var(--muted); }
 .summary {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 12px;
-  margin: 24px 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:24px 0;
 }
 .metric {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 13px;
-  padding: 16px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:16px;
 }
 .metric strong {
-  display: block;
-  font-size: 30px;
-  color: var(--gold);
+  display:block;
+  font-size:30px;
+  color:var(--gold);
 }
 .metric span {
-  color: var(--muted);
-  font-size: 13px;
+  color:var(--muted);
+  font-size:13px;
 }
 .notice {
-  background: #242335;
-  border-left: 3px solid var(--gold);
-  padding: 13px 16px;
-  border-radius: 8px;
-  margin: 18px 0;
+  background:#242335;
+  border-left:3px solid var(--gold);
+  padding:13px 16px;
+  border-radius:8px;
+  margin:18px 0;
 }
 .toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 25px 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:25px 0;
 }
-.toolbar input, .toolbar select, .toolbar button {
-  background: var(--panel);
-  color: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  padding: 12px;
-  font: inherit;
+.toolbar input,
+.toolbar select,
+.toolbar button {
+  background:var(--panel);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:12px;
+  font:inherit;
 }
-.toolbar input { flex: 2; min-width: 200px; }
-.toolbar select { flex: 1; min-width: 150px; }
-.toolbar button { cursor: pointer; background: var(--panel2); }
-.group { margin: 30px 0; }
+.toolbar input {
+  flex:2;
+  min-width:200px;
+}
+.toolbar select {
+  flex:1;
+  min-width:150px;
+}
+.toolbar button {
+  cursor:pointer;
+  background:var(--panel2);
+}
+.group { margin:30px 0; }
 .grouphead {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:10px;
 }
-.grouphead small { color: var(--muted); }
-.items { display: grid; gap: 8px; }
+.grouphead small { color:var(--muted); }
+.items { display:grid; gap:8px; }
 .item {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 11px;
-  padding: 13px 16px;
-  display: grid;
-  grid-template-columns: minmax(0,1fr) auto;
-  gap: 14px;
-  align-items: center;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:13px 16px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
 }
-.item h3 { margin: 0; font-size: 15px; }
+.item h3 { margin:0; font-size:15px; }
 .meta {
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: 4px;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
 }
 .status {
-  font-size: 12px;
-  font-weight: 750;
-  border-radius: 20px;
-  padding: 4px 10px;
-  white-space: nowrap;
+  font-size:12px;
+  font-weight:750;
+  border-radius:20px;
+  padding:4px 10px;
+  white-space:nowrap;
 }
-.owned { background: #153c32; color: var(--green); }
-.optional { background: #453a25; color: var(--amber); }
+.owned {
+  background:#153c32;
+  color:var(--green);
+}
+.missing {
+  background:#48292e;
+  color:var(--red);
+}
 .footer {
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-  margin-top: 35px;
-  font-size: 13px;
-  color: var(--muted);
+  border-top:1px solid var(--line);
+  padding-top:20px;
+  margin-top:35px;
+  font-size:13px;
+  color:var(--muted);
+}
+.empty {
+  padding:24px;
+  text-align:center;
+  color:var(--muted);
 }
 @media(max-width:650px) {
-  .summary { grid-template-columns: repeat(2,1fr); }
-  .toolbar { flex-direction: column; }
+  .summary {
+    grid-template-columns:repeat(2,1fr);
+  }
+  .toolbar { flex-direction:column; }
 }
 @media print {
-  body { background: white; color: black; }
-  .metric, .item {
-    background: white;
-    color: black;
-    border-color: #aaa;
+  body { background:white; color:black; }
+  .metric,.item {
+    background:white;
+    color:black;
+    border-color:#aaa;
   }
-  .toolbar { display: none; }
-  .status { color: black!important; background: #eee!important; }
-  p, .meta, .footer { color: #555!important; }
+  .toolbar { display:none; }
+  .status {
+    color:black!important;
+    background:#eee!important;
+  }
+  p,.meta,.footer { color:#555!important; }
 }
 </style>
 </head>
@@ -156,53 +183,60 @@ p { color: var(--muted); }
 <main>
 
 <header>
-  <div class="eyebrow">Collection inventory · Steve Jackson Games</div>
+  <div class="eyebrow">
+    Collection inventory · Steve Jackson Games
+  </div>
   <h1>MUNCHKIN<br>d20 Roleplaying Game</h1>
   <p>
-    Personal collection checklist based on photographed book spines.
-    Fantasy Munchkin d20 products are tracked separately from
-    Star Munchkin and other Steve Jackson Games publications.
+    Fantasy Munchkin d20 RPG and Star Munchkin
+    Roleplaying Game products. Each game line
+    is tracked separately, with an overall
+    Munchkin d20 completion count.
   </p>
 </header>
 
 <div class="summary">
   <div class="metric">
-    <strong>5 / 5</strong>
-    <span>Fantasy products owned</span>
+    <strong>5 / 6</strong>
+    <span>All Munchkin d20 products</span>
   </div>
   <div class="metric">
-    <strong>100%</strong>
-    <span>Fantasy line complete</span>
+    <strong>5 / 5</strong>
+    <span>Fantasy Munchkin complete</span>
+  </div>
+  <div class="metric">
+    <strong>0 / 1</strong>
+    <span>Star Munchkin RPG</span>
   </div>
   <div class="metric">
     <strong>6</strong>
-    <span>Physical fantasy copies</span>
-  </div>
-  <div class="metric">
-    <strong>1</strong>
-    <span>Duplicate book</span>
+    <span>Physical copies (1 duplicate)</span>
   </div>
 </div>
 
 <div class="notice">
-  <b>Collection status:</b> All five distinct fantasy Munchkin
-  d20 products are owned. There are two copies of the
-  Player's Handbook. The Master's Screen publication is
-  confirmed, but its original internal components have
-  not been individually verified.
-  <b>Star Munchkin</b> is a separate, optional collection item.
+  <b>Collection status:</b>
+  All five fantasy Munchkin d20 products are owned,
+  including two copies of the Player's Handbook.
+  Star Munchkin Roleplaying Game is not owned and
+  belongs to a separate standalone science-fiction
+  RPG line. The fantasy collection is complete
+  independently of Star Munchkin.
 </div>
 
 <div class="toolbar">
-  <input id="search" type="search"
-    placeholder="Search titles, product codes, notes…">
+  <input
+    id="search"
+    type="search"
+    placeholder="Search titles, product codes, notes…"
+  >
   <select id="category">
-    <option value="all">All categories</option>
+    <option value="all">All game lines</option>
   </select>
   <select id="status">
     <option value="all">All statuses</option>
     <option value="owned">Owned</option>
-    <option value="optional">Not owned / separate</option>
+    <option value="missing">Missing</option>
   </select>
   <button id="print">Print / Save PDF</button>
 </div>
@@ -211,11 +245,13 @@ p { color: var(--muted); }
 
 <div class="footer">
   <b>Catalog conventions:</b>
-  Owned means the product was identified from the supplied
-  photograph. Completeness refers to distinct published
-  fantasy Munchkin d20 products, not necessarily every
-  component originally packaged with an accessory.
-  Star Munchkin is excluded from the fantasy completion count.
+  Completion counts refer to distinct published
+  Munchkin d20 RPG products. Duplicate physical
+  copies are counted separately only in the
+  physical-copy total. The Master's Screen
+  contents have not been fully verified.
+  Kobolds Ate My Baby! is a separate RPG and
+  is not included in this Munchkin checklist.
 </div>
 
 </main>
@@ -223,70 +259,70 @@ p { color: var(--muted); }
 <script>
 const items = [
   {
-    group: "Fantasy Munchkin d20 RPG",
-    title: "Munchkin Player's Handbook",
-    code: "SJG3401",
-    year: 2003,
-    status: "owned",
-    copies: 2,
-    notes: "Two physical copies confirmed from the spines."
+    group:"Fantasy Munchkin d20 RPG",
+    title:"Munchkin Player's Handbook",
+    code:"SJG3401",
+    year:2003,
+    status:"owned",
+    copies:2,
+    notes:"Two physical copies confirmed."
   },
   {
-    group: "Fantasy Munchkin d20 RPG",
-    title: "Munchkin Master's Guide",
-    code: "SJG3402",
-    year: 2003,
-    status: "owned",
-    copies: 1,
-    notes: ""
+    group:"Fantasy Munchkin d20 RPG",
+    title:"Munchkin Master's Guide",
+    code:"SJG3402",
+    year:2003,
+    status:"owned",
+    copies:1,
+    notes:""
   },
   {
-    group: "Fantasy Munchkin d20 RPG",
-    title: "Munchkin Monster Manual",
-    code: "SJG3403",
-    year: 2003,
-    status: "owned",
-    copies: 1,
-    notes: ""
+    group:"Fantasy Munchkin d20 RPG",
+    title:"Munchkin Monster Manual",
+    code:"SJG3403",
+    year:2003,
+    status:"owned",
+    copies:1,
+    notes:""
   },
   {
-    group: "Fantasy Munchkin d20 RPG",
-    title: "Munchkin Master's Screen",
-    code: "SJG3406",
-    year: 2003,
-    status: "owned",
-    copies: 1,
-    notes: "Publication confirmed; screen, adventure, and figure-sheet completeness not yet verified."
+    group:"Fantasy Munchkin d20 RPG",
+    title:"Munchkin Master's Screen",
+    code:"SJG3406",
+    year:2003,
+    status:"owned",
+    copies:1,
+    notes:"Publication confirmed; original screen and accessory components not fully verified."
   },
   {
-    group: "Fantasy Munchkin d20 RPG",
-    title: "Munchkin Monster Manual 2.5",
-    code: "SJG3407",
-    year: 2004,
-    status: "owned",
-    copies: 1,
-    notes: ""
+    group:"Fantasy Munchkin d20 RPG",
+    title:"Munchkin Monster Manual 2.5",
+    code:"SJG3407",
+    year:2004,
+    status:"owned",
+    copies:1,
+    notes:""
   },
   {
-    group: "Separate RPG: Star Munchkin",
-    title: "Star Munchkin Roleplaying Game",
-    code: "SJG3404",
-    year: 2004,
-    status: "optional",
-    copies: 0,
-    notes: "Standalone science-fiction d20 RPG. Not required to complete the fantasy Munchkin collection. Original MSRP: $19.95."
+    group:"Star Munchkin d20 RPG",
+    title:"Star Munchkin Roleplaying Game",
+    code:"SJG3404",
+    year:2004,
+    status:"missing",
+    copies:0,
+    notes:"Standalone science-fiction d20 RPG. Separate from the fantasy Munchkin game. Original MSRP: $19.95."
   }
 ];
 
 const labels = {
-  owned: "Owned",
-  optional: "Not owned"
+  owned:"Owned",
+  missing:"Missing"
 };
 
-const groups = [...new Set(items.map(x => x.group))];
+const groups = [...new Set(items.map(x=>x.group))];
 const category = document.getElementById("category");
 
-for (const group of groups) {
+for(const group of groups) {
   const option = document.createElement("option");
   option.value = group;
   option.textContent = group;
@@ -303,7 +339,7 @@ function render() {
   root.replaceChildren();
   let count = 0;
 
-  for (const group of groups) {
+  for(const group of groups) {
     const matching = items.filter(item => {
       const searchable = [
         item.group,
@@ -321,7 +357,7 @@ function render() {
         searchable.includes(query);
     });
 
-    if (!matching.length) continue;
+    if(!matching.length) continue;
     count += matching.length;
 
     const section = document.createElement("section");
@@ -338,13 +374,13 @@ function render() {
       matching.length + " product" +
       (matching.length === 1 ? "" : "s");
 
-    head.append(heading, countLabel);
+    head.append(heading,countLabel);
     section.append(head);
 
     const list = document.createElement("div");
     list.className = "items";
 
-    for (const item of matching) {
+    for(const item of matching) {
       const row = document.createElement("article");
       row.className = "item";
 
@@ -363,7 +399,7 @@ function render() {
           : "");
       left.append(meta);
 
-      if (item.notes) {
+      if(item.notes) {
         const note = document.createElement("div");
         note.className = "meta";
         note.textContent = item.notes;
@@ -374,7 +410,7 @@ function render() {
       badge.className = "status " + item.status;
       badge.textContent = labels[item.status];
 
-      row.append(left, badge);
+      row.append(left,badge);
       list.append(row);
     }
 
@@ -382,23 +418,24 @@ function render() {
     root.append(section);
   }
 
-  if (!count) {
+  if(!count) {
     const empty = document.createElement("p");
+    empty.className = "empty";
     empty.textContent = "No matching products.";
     root.append(empty);
   }
 }
 
 document.getElementById("search")
-  .addEventListener("input", render);
+  .addEventListener("input",render);
 
-category.addEventListener("change", render);
+category.addEventListener("change",render);
 
 document.getElementById("status")
-  .addEventListener("change", render);
+  .addEventListener("change",render);
 
 document.getElementById("print")
-  .addEventListener("click", () => window.print());
+  .addEventListener("click",()=>window.print());
 
 render();
 </script>
