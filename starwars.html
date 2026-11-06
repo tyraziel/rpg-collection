@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Star Wars Gaming Collection | Inventory</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0b101b;
+  --panel: #151d2c;
+  --panel2: #1d293a;
+  --ink: #edf3fc;
+  --muted: #a8b8cd;
+  --gold: #f6cc69;
+  --line: #354154;
+  --green: #6bd6a0;
+  --red: #ff9a99;
+  --amber: #f6ca7a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top right,#273147,var(--bg) 46%);
+  font: 15px/1.55 system-ui,sans-serif;
+  color: var(--ink);
+}
+main { max-width: 1150px; margin: auto; padding: 38px 20px 70px; }
+header { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.eyebrow {
+  color: var(--gold);
+  font-weight: 750;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+h1 { font-size: clamp(30px,5vw,52px); line-height: 1.1; margin: 10px 0; }
+h2 { margin: 0; font-size: 21px; }
+p { color: var(--muted); }
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+.metric {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 16px;
+}
+.metric strong { display: block; font-size: 30px; color: var(--gold); }
+.metric span { color: var(--muted); font-size: 13px; }
+.notice {
+  background: #242335;
+  border-left: 3px solid var(--gold);
+  padding: 13px 16px;
+  border-radius: 8px;
+  margin: 18px 0;
+}
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin: 25px 0; }
+.toolbar input, .toolbar select, .toolbar button {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 12px;
+  font: inherit;
+}
+.toolbar input { flex: 2; min-width: 200px; }
+.toolbar select { flex: 1; min-width: 150px; }
+.toolbar button { cursor: pointer; background: var(--panel2); }
+.group { margin: 27px 0; }
+.grouphead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.grouphead small { color: var(--muted); }
+.items { display: grid; gap: 8px; }
+.item {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 13px 16px;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 14px;
+  align-items: center;
+}
+.item h3 { margin: 0; font-size: 15px; }
+.meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.status {
+  font-size: 12px;
+  font-weight: 750;
+  border-radius: 20px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+.owned { background: #153c32; color: var(--green); }
+.missing { background: #48292e; color: var(--red); }
+.partial { background: #453a25; color: var(--amber); }
+.empty { padding: 24px; color: var(--muted); text-align: center; }
+.footer {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 35px;
+  font-size: 13px;
+  color: var(--muted);
+}
+@media(max-width:650px) {
+  .summary { grid-template-columns: repeat(2,1fr); }
+  .toolbar { flex-direction: column; }
+}
+@media print {
+  body { background: white; color: black; }
+  .metric,.item { background: white; color: black; border-color: #aaa; }
+  .toolbar { display: none; }
+  .status { color: black!important; background: #eee!important; }
+  p,.meta,.footer { color: #555!important; }
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="eyebrow">Collection inventory · Wizards of the Coast era</div>
+  <h1>STAR WARS<br>Roleplaying &amp; Miniatures</h1>
+  <p>
+    Personal collection checklist based on photographed items and confirmed
+    contents. Original d20, Revised d20, and Saga Edition books are tracked
+    separately from boxed games, accessories, magazines, and Miniatures.
+  </p>
+</header>
+
+<div class="summary">
+  <div class="metric"><strong>9 / 10</strong><span>Original d20 books</span></div>
+  <div class="metric"><strong>9 / 9</strong><span>Revised d20 books</span></div>
+  <div class="metric"><strong>7 / 14</strong><span>Saga Edition titles (8 copies)</span></div>
+  <div class="metric"><strong>25 / 33</strong><span>All RPG book titles owned</span></div>
+</div>
+
+<div class="notice">
+  <b>Book-line status:</b> Revised Edition complete. Saga Edition is
+  7/14, with two copies of its Core Rulebook. Eight RPG book titles
+  remain missing: the original 2000 Core Rulebook and seven Saga
+  Edition books. Magazine runs and accessory completeness are separate.
+  <b>Invasion of Theed</b> is missing its original dice.
+</div>
+
+<div class="toolbar">
+  <input id="search" type="search"
+         placeholder="Search titles, notes, product codes…">
+  <select id="category">
+    <option value="all">All categories</option>
+  </select>
+  <select id="status">
+    <option value="all">All statuses</option>
+    <option value="owned">Owned</option>
+    <option value="partial">Incomplete / unverified</option>
+    <option value="missing">Missing</option>
+  </select>
+  <button id="print">Print / Save PDF</button>
+</div>
+
+<div id="catalog"></div>
+
+<div class="footer">
+  <b>Catalog conventions:</b> Owned means confirmed by photographs
+  or statements. Incomplete / unverified means components or issue
+  runs have not been fully checked. Headline counts refer to 33
+  distinct RPG books, not magazines or Miniatures.
+  The duplicate Saga core counts as one distinct title.
+</div>
+</main>
+
+<script>
+const items = [
+  // Original d20 RPG
+  ['Original d20 RPG books',
+   'Star Wars Roleplaying Game Core Rulebook (2000)',
+   'missing','Original edition core; not owned'],
+  ['Original d20 RPG books','Secrets of Naboo','owned',''],
+  ['Original d20 RPG books','Living Force Campaign Guide','owned',''],
+  ['Original d20 RPG books','Rebellion Era Sourcebook','owned',''],
+  ['Original d20 RPG books','Secrets of Tatooine','owned',''],
+  ['Original d20 RPG books','The Dark Side Sourcebook','owned',''],
+  ['Original d20 RPG books','Alien Anthology','owned',''],
+  ['Original d20 RPG books','Starships of the Galaxy','owned',''],
+  ['Original d20 RPG books','The New Jedi Order Sourcebook','owned',''],
+  ['Original d20 RPG books','Tempest Feud','owned',''],
+
+  // Revised d20 RPG
+  ['Revised d20 RPG books',
+   'Star Wars Roleplaying Game Revised Core Rulebook (2002)',
+   'owned','Product code 176500000'],
+  ['Revised d20 RPG books','Power of the Jedi Sourcebook','owned',''],
+  ['Revised d20 RPG books','Arms and Equipment Guide','owned',''],
+  ['Revised d20 RPG books','Coruscant and the Core Worlds','owned',''],
+  ['Revised d20 RPG books','Ultimate Alien Anthology','owned',''],
+  ['Revised d20 RPG books',"Hero’s Guide",'owned',''],
+  ['Revised d20 RPG books','Galactic Campaign Guide','owned',''],
+  ['Revised d20 RPG books','Geonosis and the Outer Rim Worlds','owned',''],
+  ['Revised d20 RPG books','Ultimate Adversaries','owned',''],
+
+  // Saga Edition RPG
+  ['Saga Edition RPG books',
+   'Star Wars Roleplaying Game Saga Edition Core Rulebook (2007)',
+   'owned','2 physical copies; printing differences not verified'],
+  ['Saga Edition RPG books',
+   'Starships of the Galaxy (Saga Edition)',
+   'owned','2007; distinct from original d20 book'],
+  ['Saga Edition RPG books','Threats of the Galaxy','owned','2008'],
+  ['Saga Edition RPG books',
+   'Knights of the Old Republic Campaign Guide','owned','2008'],
+  ['Saga Edition RPG books',
+   'The Force Unleashed Campaign Guide','owned','2008'],
+  ['Saga Edition RPG books','Scum and Villainy','owned','2008'],
+  ['Saga Edition RPG books',
+   'The Clone Wars Campaign Guide','owned','2009'],
+  ['Saga Edition RPG books',
+   'Legacy Era Campaign Guide','missing','2009'],
+  ['Saga Edition RPG books',
+   'Jedi Academy Training Manual','missing','2009'],
+  ['Saga Edition RPG books',
+   'Rebellion Era Campaign Guide','missing','2009'],
+  ['Saga Edition RPG books','Galaxy at War','missing','2009'],
+  ['Saga Edition RPG books',
+   "Scavenger's Guide to Droids",'missing','2009'],
+  ['Saga Edition RPG books','Galaxy of Intrigue','missing','2010'],
+  ['Saga Edition RPG books','The Unknown Regions','missing','2010'],
+
+  // Accessories and boxed adventures
+  ['RPG accessories & boxed adventures',
+   'Star Wars Roleplaying Game Gamemaster Screen (2001)',
+   'owned',
+   'Screen and original cover confirmed; ISBN 0-7869-1833-0; WTC11833; original MSRP $9.95'],
+  ['RPG accessories & boxed adventures',
+   'Star Wars: Invasion of Theed Adventure Game (2000)',
+   'partial',
+   'Box, manuals, hero folders, unpunched counters, map, survey and Rorworr figure reported/pictured; original dice missing'],
+
+  // Magazines
+  ['Magazines & periodicals',
+   'Star Wars Gamer — Special Preview Issue',
+   'owned','Darth Maul cover; photographed'],
+  ['Magazines & periodicals',
+   'Star Wars Gamer — numbered issues',
+   'partial','Several issues visible; issue-by-issue inventory pending'],
+
+  // Miniatures
+  ['Star Wars Miniatures','Galaxy Tiles','owned','2 identical copies'],
+  ['Star Wars Miniatures',
+   'Ultimate Missions: Rebel Storm','owned','Scenario book'],
+  ['Star Wars Miniatures',
+   'Ultimate Missions: Clone Strike','owned','Scenario book'],
+  ['Star Wars Miniatures',
+   'Ultimate Missions: Revenge of the Sith','owned','Scenario book'],
+  ['Star Wars Miniatures',
+   'Revenge of the Sith Starter Game',
+   'partial','Box confirmed; internal components not inventoried']
+];
+
+const labels = {
+  owned: 'Owned',
+  missing: 'Missing',
+  partial: 'Incomplete / verify'
+};
+
+const groups = [...new Set(items.map(x => x[0]))];
+const category = document.getElementById('category');
+
+groups.forEach(g => {
+  const option = document.createElement('option');
+  option.value = g;
+  option.textContent = g;
+  category.append(option);
+});
+
+function render() {
+  const q = document.getElementById('search')
+    .value.trim().toLowerCase();
+  const c = category.value;
+  const s = document.getElementById('status').value;
+  const root = document.getElementById('catalog');
+
+  root.replaceChildren();
+  let total = 0;
+
+  for (const g of groups) {
+    const matching = items.filter(x =>
+      x[0] === g &&
+      (c === 'all' || c === g) &&
+      (s === 'all' || x[2] === s) &&
+      x.join(' ').toLowerCase().includes(q)
+    );
+
+    if (!matching.length) continue;
+    total += matching.length;
+
+    const section = document.createElement('section');
+    section.className = 'group';
+
+    const head = document.createElement('div');
+    head.className = 'grouphead';
+
+    const heading = document.createElement('h2');
+    heading.textContent = g;
+
+    const count = document.createElement('small');
+    count.textContent = matching.length + ' item' +
+      (matching.length === 1 ? '' : 's');
+
+    head.append(heading, count);
+    section.append(head);
+
+    const list = document.createElement('div');
+    list.className = 'items';
+
+    for (const x of matching) {
+      const row = document.createElement('article');
+      row.className = 'item';
+
+      const left = document.createElement('div');
+      const title = document.createElement('h3');
+      title.textContent = x[1];
+      left.append(title);
+
+      if (x[3]) {
+        const note = document.createElement('div');
+        note.className = 'meta';
+        note.textContent = x[3];
+        left.append(note);
+      }
+
+      const badge = document.createElement('span');
+      badge.className = 'status ' + x[2];
+      badge.textContent = labels[x[2]];
+
+      row.append(left, badge);
+      list.append(row);
+    }
+
+    section.append(list);
+    root.append(section);
+  }
+
+  if (!total) {
+    const empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.textContent = 'No matching items.';
+    root.append(empty);
+  }
+}
+
+document.getElementById('search')
+  .addEventListener('input', render);
+category.addEventListener('change', render);
+document.getElementById('status')
+  .addEventListener('change', render);
+document.getElementById('print')
+  .addEventListener('click', () => window.print());
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warcraft RPG Collection</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0b101b;
+  --panel: #151d2c;
+  --panel2: #1d293a;
+  --ink: #edf3fc;
+  --muted: #a8b8cd;
+  --gold: #f6cc69;
+  --line: #354154;
+  --green: #6bd6a0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(
+    circle at top right,
+    #273147,
+    var(--bg) 46%
+  );
+  color: var(--ink);
+  font: 15px/1.55 system-ui, sans-serif;
+}
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 38px 20px 70px;
+}
+header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+}
+.eyebrow {
+  color: var(--gold);
+  font-weight: 750;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+h1 {
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.1;
+  margin: 10px 0;
+}
+h2 { font-size: 21px; margin: 0; }
+p { color: var(--muted); }
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+.metric {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 16px;
+}
+.metric strong {
+  display: block;
+  font-size: 30px;
+  color: var(--gold);
+}
+.metric span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.notice {
+  background: #1d302c;
+  border-left: 3px solid var(--green);
+  padding: 13px 16px;
+  border-radius: 8px;
+  margin: 18px 0;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 25px 0;
+}
+.toolbar input,
+.toolbar select,
+.toolbar button {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 12px;
+  font: inherit;
+}
+.toolbar input {
+  flex: 2;
+  min-width: 200px;
+}
+.toolbar select {
+  flex: 1;
+  min-width: 150px;
+}
+.toolbar button {
+  cursor: pointer;
+  background: var(--panel2);
+}
+.group { margin: 30px 0; }
+.grouphead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.grouphead small { color: var(--muted); }
+.items { display: grid; gap: 8px; }
+.item {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 13px 16px;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 14px;
+  align-items: center;
+}
+.item h3 {
+  margin: 0;
+  font-size: 15px;
+}
+.meta {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+.status {
+  font-size: 12px;
+  font-weight: 750;
+  border-radius: 20px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  background: #153c32;
+  color: var(--green);
+}
+.footer {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 35px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+@media(max-width:650px) {
+  .summary {
+    grid-template-columns: repeat(2,1fr);
+  }
+  .toolbar { flex-direction: column; }
+}
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .metric, .item {
+    background: white;
+    color: black;
+    border-color: #aaa;
+  }
+  .toolbar { display: none; }
+  .status {
+    color: black!important;
+    background: #eee!important;
+  }
+  p, .meta, .footer {
+    color: #555!important;
+  }
+}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <div class="eyebrow">
+    Collection inventory · Sword &amp; Sorcery Studios
+  </div>
+  <h1>WARCRAFT<br>Roleplaying Game Collection</h1>
+  <p>
+    Complete collection of the original Warcraft d20 RPG
+    and the revised World of Warcraft tabletop RPG,
+    published by Sword &amp; Sorcery Studios / White Wolf
+    under license from Blizzard Entertainment.
+  </p>
+</header>
+
+<div class="summary">
+  <div class="metric">
+    <strong>13 / 13</strong>
+    <span>Total published books owned</span>
+  </div>
+  <div class="metric">
+    <strong>6 / 6</strong>
+    <span>Original Warcraft RPG</span>
+  </div>
+  <div class="metric">
+    <strong>7 / 7</strong>
+    <span>World of Warcraft RPG</span>
+  </div>
+  <div class="metric">
+    <strong>100%</strong>
+    <span>Collection complete</span>
+  </div>
+</div>
+
+<div class="notice">
+  <b>Collection status: Complete.</b>
+  All 13 published books across the two Sword &amp;
+  Sorcery Studios Warcraft RPG editions are owned.
+  Product number WW17209 was not used for a published
+  book in this line. Modern RPG adaptations are not
+  included in this historical collection.
+</div>
+
+<div class="toolbar">
+  <input
+    id="search"
+    type="search"
+    placeholder="Search titles, product codes, notes…"
+  >
+  <select id="category">
+    <option value="all">All editions</option>
+  </select>
+  <button id="print">Print / Save PDF</button>
+</div>
+
+<div id="catalog"></div>
+
+<div class="footer">
+  <b>Catalog conventions:</b>
+  Owned means the title was identified from the
+  supplied photographs. Counts refer to distinct
+  published books, not reprints or digital editions.
+  The original Warcraft RPG and revised World of
+  Warcraft RPG are treated as separate editions.
+</div>
+
+</main>
+
+<script>
+const items = [
+  {
+    group: "Warcraft: The Roleplaying Game — Original d20",
+    title: "Warcraft: The Roleplaying Game",
+    code: "WW17200",
+    status: "owned"
+  },
+  {
+    group: "Warcraft: The Roleplaying Game — Original d20",
+    title: "Alliance & Horde Compendium",
+    code: "WW17201",
+    status: "owned"
+  },
+  {
+    group: "Warcraft: The Roleplaying Game — Original d20",
+    title: "Manual of Monsters",
+    code: "WW17202",
+    status: "owned"
+  },
+  {
+    group: "Warcraft: The Roleplaying Game — Original d20",
+    title: "Magic & Mayhem",
+    code: "WW17203",
+    status: "owned"
+  },
+  {
+    group: "Warcraft: The Roleplaying Game — Original d20",
+    title: "Lands of Conflict",
+    code: "WW17204",
+    status: "owned"
+  },
+  {
+    group: "Warcraft: The Roleplaying Game — Original d20",
+    title: "Shadows & Light",
+    code: "WW17205",
+    status: "owned"
+  },
+
+  {
+    group: "World of Warcraft: The Roleplaying Game — Revised",
+    title: "Lands of Mystery",
+    code: "WW17206",
+    status: "owned"
+  },
+  {
+    group: "World of Warcraft: The Roleplaying Game — Revised",
+    title: "Alliance Player's Guide",
+    code: "WW17207",
+    status: "owned"
+  },
+  {
+    group: "World of Warcraft: The Roleplaying Game — Revised",
+    title: "Horde Player's Guide",
+    code: "WW17208",
+    status: "owned"
+  },
+  {
+    group: "World of Warcraft: The Roleplaying Game — Revised",
+    title: "World of Warcraft: The Roleplaying Game",
+    code: "WW17210",
+    status: "owned"
+  },
+  {
+    group: "World of Warcraft: The Roleplaying Game — Revised",
+    title: "More Magic & Mayhem",
+    code: "WW17211",
+    status: "owned"
+  },
+  {
+    group: "World of Warcraft: The Roleplaying Game — Revised",
+    title: "Monster Guide",
+    code: "WW17212",
+    status: "owned"
+  },
+  {
+    group: "World of Warcraft: The Roleplaying Game — Revised",
+    title: "Dark Factions",
+    code: "WW17213",
+    status: "owned"
+  }
+];
+
+const groups = [...new Set(items.map(x => x.group))];
+const category = document.getElementById("category");
+
+for (const group of groups) {
+  const option = document.createElement("option");
+  option.value = group;
+  option.textContent = group;
+  category.append(option);
+}
+
+function render() {
+  const query = document.getElementById("search")
+    .value.trim().toLowerCase();
+
+  const selectedCategory = category.value;
+  const root = document.getElementById("catalog");
+
+  root.replaceChildren();
+  let total = 0;
+
+  for (const group of groups) {
+    const matching = items.filter(item => {
+      const searchable = [
+        item.group,
+        item.title,
+        item.code
+      ].join(" ").toLowerCase();
+
+      return item.group === group &&
+        (selectedCategory === "all" ||
+         selectedCategory === group) &&
+        searchable.includes(query);
+    });
+
+    if (!matching.length) continue;
+    total += matching.length;
+
+    const section = document.createElement("section");
+    section.className = "group";
+
+    const head = document.createElement("div");
+    head.className = "grouphead";
+
+    const heading = document.createElement("h2");
+    heading.textContent = group;
+
+    const count = document.createElement("small");
+    count.textContent =
+      matching.length + " book" +
+      (matching.length === 1 ? "" : "s");
+
+    head.append(heading, count);
+    section.append(head);
+
+    const list = document.createElement("div");
+    list.className = "items";
+
+    for (const item of matching) {
+      const row = document.createElement("article");
+      row.className = "item";
+
+      const left = document.createElement("div");
+
+      const title = document.createElement("h3");
+      title.textContent = item.title;
+      left.append(title);
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      meta.textContent = item.code;
+      left.append(meta);
+
+      const badge = document.createElement("span");
+      badge.className = "status";
+      badge.textContent = "Owned";
+
+      row.append(left, badge);
+      list.append(row);
+    }
+
+    section.append(list);
+    root.append(section);
+  }
+
+  if (!total) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No matching books.";
+    root.append(empty);
+  }
+}
+
+document.getElementById("search")
+  .addEventListener("input", render);
+
+category.addEventListener("change", render);
+
+document.getElementById("print")
+  .addEventListener("click", () => window.print());
+
+render();
+</script>
+</body>
+</html>

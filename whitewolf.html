@@ -1,0 +1,228 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>White Wolf Collection — Inventory & Valuation</title>
+<style>
+:root {
+  font-family: system-ui,-apple-system,Segoe UI,sans-serif;
+  color: #e9e9ee;
+  background: #10121a;
+}
+body { margin: 0; }
+main { max-width: 1180px; margin: auto; padding: 32px 22px; }
+h1 { font-size: 2.2rem; margin-bottom: 5px; }
+p { color: #b8bac8; line-height: 1.5; }
+.cards { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin: 26px 0; }
+.card { background: #1c2030; border: 1px solid #34394c; border-radius: 12px; padding: 18px; }
+.card small { color: #adb3c4; }
+.card strong { display: block; font-size: 1.7rem; margin-top: 8px; }
+.toolbar { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0; }
+input,select,button { font: inherit; background: #202537; color: #fff; border: 1px solid #424962; border-radius: 8px; padding: 10px 12px; }
+input { flex: 1; min-width: 200px; }
+button { cursor: pointer; }
+table { width: 100%; border-collapse: collapse; background: #171b28; border-radius: 12px; overflow: hidden; }
+th,td { padding: 12px 11px; text-align: left; border-bottom: 1px solid #303546; }
+th { background: #242a3b; color: #c9d3ee; position: sticky; top: 0; }
+td.num,th.num { text-align: right; white-space: nowrap; }
+tr.group td { background: #252d40; font-weight: 700; color: #dbe5ff; }
+tr:hover:not(.group) { background: #202638; }
+a { color: #9dbfff; }
+.muted { color: #9da6bb; }
+.note { border-left: 3px solid #8298ce; padding: 5px 15px; background: #1c2130; margin: 20px 0; }
+.footer { margin-top: 28px; }
+@media(max-width:700px) {
+  .cards { grid-template-columns: repeat(2,1fr); }
+  main { padding: 16px 10px; }
+  th,td { padding: 9px 6px; font-size: 12px; }
+  h1 { font-size: 1.7rem; }
+}
+@media print {
+  :root { color: #111; background: white; }
+  main { max-width: none; padding: 0; }
+  .toolbar { display: none; }
+  .card,table,.note { background: white; color: #111; border-color: #aaa; }
+  th,tr.group td { background: #ddd!important; color: #111; }
+  td,th { border-color: #aaa; }
+  p,.muted,.card small { color: #333; }
+  a { color: #111; }
+}
+</style>
+</head>
+<body>
+<main>
+<h1>White Wolf Collection</h1>
+<p>28 cataloged books and booklets · Working inventory and historical price comparison · November 5, 2026</p>
+
+<div class="cards">
+  <div class="card"><small>Books / booklets</small><strong id="count">28</strong></div>
+  <div class="card"><small>Estimated resale low</small><strong id="low">$487</strong></div>
+  <div class="card"><small>Estimated resale high</small><strong id="high">$1,105</strong></div>
+  <div class="card"><small>Verified original MSRP total</small><strong id="msrp">—</strong><small>Partial only; excludes unknowns</small></div>
+</div>
+
+<div class="note">
+<strong>How to read this:</strong>
+<p>Original MSRP is shown only when a historical cover price or contemporary source was found. A dash means unverified, not $0. Resale ranges are preliminary estimates, not newly verified sold comparisons for every title. Actual prices depend on edition, condition, completeness, demand, and selling fees. All amounts USD, not inflation-adjusted.</p>
+</div>
+
+<div class="toolbar">
+  <input id="search" placeholder="Search title or WW number">
+  <select id="filter">
+    <option value="">All game lines</option>
+    <option>Changeling</option>
+    <option>Werewolf</option>
+    <option>Exalted</option>
+    <option>Hunter</option>
+  </select>
+  <button id="csv">Export CSV</button>
+  <button onclick="print()">Print / Save PDF</button>
+</div>
+
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr>
+  <th>Game line / Title</th>
+  <th>WW code</th>
+  <th class="num">Original MSRP</th>
+  <th class="num">Resale low</th>
+  <th class="num">Resale high</th>
+  <th>MSRP source</th>
+</tr>
+</thead>
+<tbody id="body"></tbody>
+<tfoot id="foot"></tfoot>
+</table>
+</div>
+
+<div class="footer">
+<h2>Source notes</h2>
+<p>
+<a href="https://www.giveneyestosee.com/changeling/changeling-withpics.html">Historical Changeling bibliography</a> ·
+<a href="https://whitewolf.fandom.com/wiki/White_Wolf_1995_Game_Studio_Catalog_%28May-December%29">1995 White Wolf catalog</a> ·
+<a href="https://www.rpg.net/reviews/archive/classic/rev_3246.phtml">RPGnet Ananasi review</a> ·
+<a href="https://www.rpg.net/reviews/archive/classic/rev_4946.phtml">RPGnet Exalted review</a>.
+</p>
+<p class="muted">WW4325 is the Fianna spine code as reported; other catalogs may use a different code. Exalted 2e is WW80000. Keep/sell status has not been assigned to the entire White Wolf group.</p>
+</div>
+</main>
+
+<script>
+const data = [
+  {group:"Changeling",code:"7000",title:"Changeling: The Dreaming (1e)",low:35,high:75,msrp:25,source:"changeling"},
+  {group:"Changeling",code:"7007",title:"Isle of the Mighty",low:20,high:40,msrp:22,source:"changeling"},
+  {group:"Changeling",code:"7008",title:"The Enchanted",low:15,high:30,msrp:16,source:"changeling"},
+  {group:"Changeling",code:"7009",title:"Changeling Storytellers Guide",low:25,high:50,msrp:null,source:"changeling"},
+  {group:"Changeling",code:"7010",title:"The Fool’s Luck: The Way of the Commoner",low:12,high:25,msrp:17.95,source:"changeling"},
+  {group:"Changeling",code:"7050",title:"Kithbook: Trolls",low:15,high:30,msrp:12,source:"changeling"},
+  {group:"Changeling",code:"7051",title:"Kithbook: Sluagh",low:15,high:35,msrp:12,source:"changeling"},
+  {group:"Changeling",code:"7201",title:"Immortal Eyes: Shadows on the Hill",low:12,high:30,msrp:null,source:"changeling"},
+  {group:"Changeling",code:"7202",title:"Immortal Eyes: Court of All Kings",low:10,high:25,msrp:null,source:"changeling"},
+  {group:"Changeling",code:"7304",title:"Pour L’Amour et Liberté: The Book of Houses 2",low:20,high:45,msrp:null,source:"changeling"},
+
+  {group:"Werewolf",code:"3000",title:"Werewolf: The Apocalypse (1e)",low:15,high:35,msrp:null,source:null},
+  {group:"Werewolf",code:"3801",title:"Werewolf: The Apocalypse (Revised)",low:20,high:45,msrp:null,source:null},
+  {group:"Werewolf",code:"3056",title:"Glass Walkers Tribebook",low:12,high:30,msrp:null,source:null},
+  {group:"Werewolf",code:"3058",title:"Shadow Lords Tribebook",low:12,high:30,msrp:null,source:null},
+  {group:"Werewolf",code:"3075",title:"Bastet",low:15,high:35,msrp:null,source:null},
+  {group:"Werewolf",code:"3080",title:"Ratkin",low:25,high:45,msrp:null,source:null},
+  {group:"Werewolf",code:"3082",title:"Ananasi",low:35,high:75,msrp:17.95,source:"ananasi"},
+  {group:"Werewolf",code:"4325",title:"Fianna Tribebook (spine code)",low:12,high:30,msrp:null,source:null},
+
+  {group:"Exalted",code:"8800",title:"Exalted (1e)",low:20,high:45,msrp:29.95,source:"exalted"},
+  {group:"Exalted",code:"80000",title:"Exalted (2e)",low:20,high:40,msrp:null,source:null},
+  {group:"Exalted",code:"8811",title:"The Dragon-Blooded",low:20,high:45,msrp:null,source:null},
+  {group:"Exalted",code:"8812",title:"The Lunars",low:20,high:45,msrp:null,source:null},
+  {group:"Exalted",code:"8813",title:"The Abyssals",low:12,high:30,msrp:null,source:null},
+  {group:"Exalted",code:"8814",title:"The Sidereals",low:18,high:40,msrp:null,source:null},
+  {group:"Exalted",code:"8815",title:"The Fair Folk",low:15,high:35,msrp:null,source:null},
+  {group:"Exalted",code:"8850",title:"The Outcaste",low:12,high:30,msrp:null,source:null},
+
+  {group:"Hunter",code:"8100",title:"Hunter: The Reckoning",low:25,high:55,msrp:null,source:null},
+  {group:"Hunter",code:"—",title:"Hunter: The Vigil — Free Rules and Adventure",low:0,high:10,msrp:null,source:null}
+];
+
+const sources = {
+  changeling: "https://www.giveneyestosee.com/changeling/changeling-withpics.html",
+  ananasi: "https://www.rpg.net/reviews/archive/classic/rev_3246.phtml",
+  exalted: "https://www.rpg.net/reviews/archive/classic/rev_4946.phtml"
+};
+
+const money = n => '$' + n.toLocaleString('en-US', {
+  minimumFractionDigits: Number.isInteger(n) ? 0 : 2,
+  maximumFractionDigits: 2
+});
+
+const search = document.getElementById('search');
+const filter = document.getElementById('filter');
+
+function render() {
+  const arr = data.filter(x =>
+    (!filter.value || x.group === filter.value) &&
+    `${x.title} ${x.code}`.toLowerCase().includes(search.value.toLowerCase())
+  );
+
+  let out = '';
+  let last = '';
+
+  for (const x of arr) {
+    if (x.group !== last) {
+      last = x.group;
+      out += `<tr class="group"><td colspan="6">${last}</td></tr>`;
+    }
+
+    out += `<tr>
+      <td>${x.title}</td>
+      <td>WW${x.code === '—' ? ' —' : x.code}</td>
+      <td class="num">${x.msrp === null ? '—' : money(x.msrp)}</td>
+      <td class="num">${money(x.low)}</td>
+      <td class="num">${money(x.high)}</td>
+      <td>${x.msrp === null
+        ? '<span class="muted">Unverified</span>'
+        : `<a target="_blank" rel="noopener" href="${sources[x.source]}">Historical source</a>`
+      }</td>
+    </tr>`;
+  }
+
+  document.getElementById('body').innerHTML = out;
+  document.getElementById('count').textContent = arr.length;
+  document.getElementById('low').textContent = money(arr.reduce((a,x) => a+x.low,0));
+  document.getElementById('high').textContent = money(arr.reduce((a,x) => a+x.high,0));
+  document.getElementById('msrp').textContent = money(arr.reduce((a,x) => a+(x.msrp||0),0));
+
+  document.getElementById('foot').innerHTML = `
+    <tr class="group">
+      <td colspan="3">Filtered total (${arr.length} items; MSRP partial)</td>
+      <td class="num">${money(arr.reduce((a,x) => a+x.low,0))}</td>
+      <td class="num">${money(arr.reduce((a,x) => a+x.high,0))}</td>
+      <td></td>
+    </tr>`;
+}
+
+search.addEventListener('input', render);
+filter.addEventListener('change', render);
+
+document.getElementById('csv').addEventListener('click', () => {
+  const lines = [
+    ['Game line','WW code','Title','Original MSRP USD','Estimated resale low USD','Estimated resale high USD','MSRP source URL'],
+    ...data.map(x => [x.group,x.code,x.title,x.msrp??'',x.low,x.high,x.source?sources[x.source]:''])
+  ];
+
+  const csv = lines.map(row =>
+    row.map(v => '"' + String(v).replaceAll('"','""') + '"').join(',')
+  ).join('\r\n');
+
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  a.download = 'white_wolf_collection.csv';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href),1000);
+});
+
+render();
+</script>
+</body>
+</html>
