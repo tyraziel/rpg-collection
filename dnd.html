@@ -141,12 +141,16 @@ p { color:var(--muted); }
     <span>Official D&D 3.0/3.5</span>
   </div>
   <div class="metric">
-    <strong id="thirdparty">26</strong>
-    <span>Third-party d20</span>
+    <strong>7</strong>
+    <span>Forgotten Realms 3.0/3.5</span>
   </div>
   <div class="metric">
-    <strong id="other">10</strong>
-    <span>Forgotten Realms + 4e</span>
+    <strong>3</strong>
+    <span>D&D 4th Edition books</span>
+  </div>
+  <div class="metric">
+    <strong id="thirdparty">26</strong>
+    <span>Third-party d20</span>
   </div>
 </div>
 
@@ -220,6 +224,24 @@ add("D&D 3.0 / 3.5 — Official","Wizards of the Coast",[
   "Complete Adventurer"
 ]);
 
+// Forgotten Realms — separate setting within D&D
+add("Forgotten Realms","Wizards of the Coast",[
+  "Forgotten Realms Campaign Setting",
+  "Player's Guide to Faerûn",
+  "Faiths and Pantheons",
+  "Dragons of Faerûn",
+  "The Grand History of the Realms",
+  "Races of Faerûn",
+  "The Twilight Tomb"
+],"Forgotten Realms / 3.x");
+
+// Fourth Edition core books
+add("D&D 4th Edition","Wizards of the Coast",[
+  "Player's Handbook",
+  "Dungeon Master's Guide",
+  "Monster Manual"
+],"4th Edition");
+
 // Third-party d20 supplements
 add("Third-party d20 System","Fantasy Flight Games",[
   "Cityworks"
@@ -261,24 +283,6 @@ add("Third-party d20 System","Malhavoc Press",[
 add("Third-party d20 System","Troll Lord Games",[
   "The Book of Familiars"
 ]);
-
-// Forgotten Realms — separate setting within D&D
-add("Forgotten Realms","Wizards of the Coast",[
-  "Forgotten Realms Campaign Setting",
-  "Player's Guide to Faerûn",
-  "Faiths and Pantheons",
-  "Dragons of Faerûn",
-  "The Grand History of the Realms",
-  "Races of Faerûn",
-  "The Twilight Tomb"
-],"Forgotten Realms / 3.x");
-
-// Fourth Edition core books
-add("D&D 4th Edition","Wizards of the Coast",[
-  "Player's Handbook",
-  "Dungeon Master's Guide",
-  "Monster Manual"
-],"4th Edition");
 
 const groups = [...new Set(items.map(x=>x.group))];
 const publishers = [...new Set(items.map(x=>x.publisher))].sort();
